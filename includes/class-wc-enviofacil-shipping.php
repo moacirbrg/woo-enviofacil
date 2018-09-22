@@ -68,7 +68,7 @@ class WC_EnvioFacil_Shipping extends WC_Shipping_Method {
 				'type'        => 'text',
 				'description' => __( 'Title to be displayed on site.', WC_ENVIOFACIL_DOMAIN ),
 				'desc_tip'    => true,
-				'default'     => __( 'PAC', WC_ENVIOFACIL_DOMAIN ),
+				'default'     => 'PAC',
 			),
 			'sedex_enabled' => array(
 				'title'       => __( 'Enable SEDEX', WC_ENVIOFACIL_DOMAIN ),
@@ -82,7 +82,7 @@ class WC_EnvioFacil_Shipping extends WC_Shipping_Method {
 				'type'        => 'text',
 				'description' => __( 'Title to be displayed on site', WC_ENVIOFACIL_DOMAIN ),
 				'desc_tip'    => true,
-				'default'     => __( 'SEDEX', WC_ENVIOFACIL_DOMAIN ),
+				'default'     => 'SEDEX',
 			),
 			'additional_time'  => array(
 				'title'       => __( 'Additional days', WC_ENVIOFACIL_DOMAIN ),
