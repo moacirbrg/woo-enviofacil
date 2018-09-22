@@ -4,9 +4,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 class WC_EnvioFacil_Shipping extends WC_Shipping_Method {
-	
+
 	public function __construct( $instance_id = 0 ) {
-		$this->instance_id        = absint( $instance_id );
+		parent::__construct( $instance_id );
 		$this->id                 = 'enviofacil';
 		$this->method_title       = __( 'Envio Fácil', WC_ENVIOFACIL_DOMAIN );
 		$this->method_description = __( 'Métodos PAC e SEDEX do Envio Fácil.', WC_ENVIOFACIL_DOMAIN );

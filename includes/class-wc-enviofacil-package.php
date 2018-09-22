@@ -24,7 +24,9 @@ class WC_EnvioFacil_Package {
 		$weight = array();
 		
 		foreach ( $this->package['contents'] as $item_id => $values ) {
+			/** @var WC_Product $product */
 			$product = $values['data'];
+			/** @var int $qty */
 			$qty     = $values['quantity'];
 			
 			if ( $qty > 0 && $product->needs_shipping() ) {

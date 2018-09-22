@@ -114,10 +114,17 @@ class WC_EnvioFacil_WebService {
 		$data_array = json_decode( $res );
 
 		$rates = array();
-		
+
+		if ( ! is_array( $data_array ) )  {
+			return $rates;
+		}
+
 		foreach ( $data_array as $data_obj ) {
-			$rate = new WC_EnvioFacil_Rate( $data_obj );
-			array_push( $rates, $rate );
+			try {
+				$rate = new WC_EnvioFacil_Rate( $data_obj );
+				array_push( $rates, $rate );
+			}
+			catch(InvalidArgumentException $e) {}
 		}
 
 		return $rates;

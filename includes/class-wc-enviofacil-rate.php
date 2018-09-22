@@ -10,6 +10,10 @@ class WC_EnvioFacil_Rate {
     private $estimated_delivery;
 
     public function __construct( $obj ) {
+    	if ( ! isset( $obj->serviceType ) ) {
+		    throw new InvalidArgumentException();
+	    }
+
         if ( $obj->serviceType == 'PAC' ) {
             $this->service_type = WC_EnvioFacil_Shipping_Method::PAC;
         }
