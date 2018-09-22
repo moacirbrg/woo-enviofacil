@@ -6,10 +6,6 @@ class WC_EnvioFacil {
         self::wc_includes();
         self::includes();
 
-        if ( is_admin() ) {
-            self::admin_includes();
-        }
-
         add_filter( 'woocommerce_shipping_methods', array( __CLASS__, 'include_methods' ) );
     }
 
@@ -24,10 +20,6 @@ class WC_EnvioFacil {
         include_once dirname( __FILE__ ) . '/class-wc-enviofacil-rate.php';
         include_once dirname( __FILE__ ) . '/class-wc-enviofacil-webservice.php';
         include_once dirname( __FILE__ ) . '/class-wc-enviofacil-shipping.php';
-    }
-
-    public static function admin_includes() {
-        
     }
 
     public static function include_methods( $methods ) {

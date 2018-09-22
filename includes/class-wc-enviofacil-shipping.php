@@ -25,6 +25,10 @@ class WC_EnvioFacil_Shipping extends WC_Shipping_Method {
 		add_action( 'woocommerce_update_options_shipping_' . $this->id, array( $this, 'process_admin_options' ) );
 	}
 
+	/**
+	 * {@inheritDoc}
+	 * @see WC_Settings_API::init_form_fields()
+	 */
 	public function init_form_fields() {
 		$this->form_fields = array( 
 			'enabled' => array( 
@@ -39,6 +43,10 @@ class WC_EnvioFacil_Shipping extends WC_Shipping_Method {
 				'default'     => __( $this->method_title, WC_ENVIOFACIL_DOMAIN ) ) );
 	}
 
+	/**
+	 * {@inheritDoc}
+	 * @see WC_Shipping_Method::calculate_shipping()
+	 */
 	public function calculate_shipping( $package = array() ) {
 		$_package = new WC_EnvioFacil_Package( $package );
 		$package_data = $_package->get_package_data();

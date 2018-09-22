@@ -15,6 +15,13 @@ class WC_EnvioFacil_WebService {
 
 	public function __construct() { }
 
+	/**
+	 * Gets the best weight according to the available weights of the web service 
+	 * 
+	 * @param number $weight Real weight of the package
+	 * 
+	 * @return number
+	 */
 	private function get_webservice_weigth( $weight = 0 ) {
 		$available_weights = [
 			0.3, // Max 0.3kg
@@ -68,6 +75,11 @@ class WC_EnvioFacil_WebService {
 		$this->_weight = $weight;
 	}
 
+	/**
+	 * Creates params to be JSON encoded according to web service
+	 * 
+	 * @return array
+	 */
 	private function create_params() {
 		$params = [
 			'cepFrom' => $this->_cep_from,
@@ -83,7 +95,8 @@ class WC_EnvioFacil_WebService {
 	}
 
 	/**
-	 * Get delivery rates from EnvioFácil WebService
+	 * Gets delivery rates from the web service
+	 * 
 	 * @return WC_EnvioFacil_Rate[]
 	 */
 	public function get_enviofacil_rates() {

@@ -21,14 +21,29 @@ class WC_EnvioFacil_Rate {
         $this->estimated_delivery = $obj->estimatedDelivery;
     }
     
+    /**
+     * Gets 'PAC' or 'SEDEX' to notify caller about the shipping method of this rate
+     * 
+     * @return string
+     */
     public function get_service_type() {
     	return $this->service_type;
     }
     
+    /**
+     * Gets the total price of this shipping method
+     * 
+     * @return float
+     */
     public function get_total_value() {
     	return $this->total_value;
     }
     
+    /**
+     * Gets estimated delivery in days
+     * 
+     * @return int
+     */
     public function get_estimated_delivery() {
     	return $this->estimated_delivery;
     }

@@ -1,15 +1,15 @@
 <?php
 /**
  * Plugin Name:          WooCommerce Envio Fácil
- * Plugin URI:           https://...
+ * Plugin URI:           https://github.com/moacirbrg/woocommerce-enviofacil
  * Description:          Adds Envio Fácil shipping methods to WooCommerce
  * Author:               Moacir Braga
  * Version:              0.0.1
- * License:              GPLv2 or later
+ * License:              GPLv3 or later
  * Text Domain:          wc-enviofacil
  * Domain Path:          /languages
  * WC requires at least: 3.0.0
- * WC tested up to:      3.4.0
+ * WC tested up to:      4.9.8
  *
  * WooCommerce Correios is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
