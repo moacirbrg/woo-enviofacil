@@ -4,11 +4,11 @@
  * Plugin URI:           https://github.com/moacirbrg/woocommerce-enviofacil
  * Description:          Adds Envio Fácil shipping methods to WooCommerce
  * Author:               Moacir Braga
- * Version:              0.1.0
+ * Version:              0.1.1
  * License:              GPLv3 or later
- * Text Domain:          wc-enviofacil
+ * Text Domain:          woocommerce-enviofacil
  * Domain Path:          /languages
- * WC requires at least: 4.0.0
+ * WC requires at least: 4.6.0
  * WC tested up to:      4.9.8
  *
  * Copyright (C) 2018  Moacir Braga
@@ -34,7 +34,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 define( 'WC_ENVIOFACIL_PLUGIN_FILE', __FILE__ );
-define( 'WC_ENVIOFACIL_DOMAIN', __FILE__ );
+define( 'WC_ENVIOFACIL_DOMAIN', 'woocommerce-enviofacil' );
 
 if ( ! class_exists( 'WC_EnvioFacil' ) ) {
 	if ( in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', get_option( 'active_plugins' ) ) ) ) {

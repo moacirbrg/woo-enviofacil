@@ -17,17 +17,12 @@ class WC_EnvioFacil_Shipping extends WC_Shipping_Method {
 		parent::__construct( $instance_id );
 		$this->id                 = 'enviofacil';
 		$this->method_title       = __( 'Envio Fácil', WC_ENVIOFACIL_DOMAIN );
-		$this->method_description = __( 'Métodos PAC e SEDEX do Envio Fácil.', WC_ENVIOFACIL_DOMAIN );
+		$this->method_description = __( 'Adds shipping method PAC and SEDEX via Envio Fácil to WooCommerce.', WC_ENVIOFACIL_DOMAIN );
 		$this->supports           = array( 'shipping-zones', 'instance-settings' );
-		
-		$this->enabled = isset( $this->settings['enabled'] ) ? $this->settings['enabled'] : 'yes';
-		$this->title = isset( $this->settings['title'] )
-			? $this->settings['title']
-			: __( $this->method_title, WC_ENVIOFACIL_DOMAIN );
+		$this->title              = __( 'Envio Fácil', WC_ENVIOFACIL_DOMAIN );
 
 		$this->init_form_fields();
 
-		$this->enabled                  = $this->get_option( 'enabled' );
 		$this->_origin_postcode         = $this->get_option( 'origin_postcode' );
 		$this->_show_estimated_delivery = $this->get_option( 'show_estimated_delivery' );
 		$this->_pac_enabled             = $this->get_option( 'pac_enabled' );
@@ -46,66 +41,61 @@ class WC_EnvioFacil_Shipping extends WC_Shipping_Method {
 	 */
 	public function init_form_fields() {
 		$this->instance_form_fields = array(
-			'enabled' => array( 
-				'title'       => __( 'Habilitar o Envio Fácil', WC_ENVIOFACIL_DOMAIN ),
-				'type'        => 'checkbox',
-				'default'     => 'yes',
-			),
 			'origin_postcode' => array(
-				'title'       => __( 'CEP do remetente', WC_ENVIOFACIL_DOMAIN ),
+				'title'       => __( 'Origin postcode', WC_ENVIOFACIL_DOMAIN ),
 				'type'        => 'text',
-				'description' => __( 'É o CEP de origem do pacote', WC_ENVIOFACIL_DOMAIN ),
+				'description' => __( 'It is the postcode from the sender.', WC_ENVIOFACIL_DOMAIN ),
 				'desc_tip'    => true,
-				'default'     => __( '00000-000', WC_ENVIOFACIL_DOMAIN ),
+				'default'     => '00000-000',
 			),
 			'show_estimated_delivery' => array(
-				'title'       => __( 'Estimativa de entrega', WC_ENVIOFACIL_DOMAIN ),
+				'title'       => __( 'Estimated delivery.', WC_ENVIOFACIL_DOMAIN ),
 				'type'        => 'checkbox',
-				'label'       => __( 'Exibir estimativa de entrega', WC_ENVIOFACIL_DOMAIN ),
-				'description' => __( 'Exibe o tempo estimado de entrega em dias úteis.', WC_ENVIOFACIL_DOMAIN ),
+				'label'       => __( 'Show estimated delivery', WC_ENVIOFACIL_DOMAIN ),
+				'description' => __( 'Display the estimated delivery in business day.', WC_ENVIOFACIL_DOMAIN ),
 				'desc_tip'    => true,
 				'default'     => 'yes',
 			),
 			'pac_enabled' => array(
-				'title'       => __( 'Habilitar o PAC', WC_ENVIOFACIL_DOMAIN ),
+				'title'       => __( 'Enable PAC', WC_ENVIOFACIL_DOMAIN ),
 				'type'        => 'checkbox',
-				'description' => __( 'Habilitar o PAC como método de entrega.', WC_ENVIOFACIL_DOMAIN ),
+				'description' => __( 'Enable PAC as a shipping method.', WC_ENVIOFACIL_DOMAIN ),
 				'desc_tip'    => true,
 				'default'     => 'yes',
 			),
 			'pac_title' => array(
-				'title'       => __( 'Título do PAC', WC_ENVIOFACIL_DOMAIN ),
+				'title'       => __( 'PAC title', WC_ENVIOFACIL_DOMAIN ),
 				'type'        => 'text',
-				'description' => __( 'Como o PAC será chamado no site', WC_ENVIOFACIL_DOMAIN ),
+				'description' => __( 'Title to be displayed on site.', WC_ENVIOFACIL_DOMAIN ),
 				'desc_tip'    => true,
 				'default'     => __( 'PAC', WC_ENVIOFACIL_DOMAIN ),
 			),
 			'sedex_enabled' => array(
-				'title'       => __( 'Habilitar o SEDEX', WC_ENVIOFACIL_DOMAIN ),
+				'title'       => __( 'Enable SEDEX', WC_ENVIOFACIL_DOMAIN ),
 				'type'        => 'checkbox',
-				'description' => __( 'Habilitar o SEDEX como método de entrega.', WC_ENVIOFACIL_DOMAIN ),
+				'description' => __( 'Enable SEDEX as a shipping method.', WC_ENVIOFACIL_DOMAIN ),
 				'desc_tip'    => true,
 				'default'     => 'yes',
 			),
 			'sedex_title' => array(
 				'title'       => __( 'Título do SEDEX', WC_ENVIOFACIL_DOMAIN ),
 				'type'        => 'text',
-				'description' => __( 'Como o SEDEX será chamado no site', WC_ENVIOFACIL_DOMAIN ),
+				'description' => __( 'Title to be displayed on site', WC_ENVIOFACIL_DOMAIN ),
 				'desc_tip'    => true,
 				'default'     => __( 'SEDEX', WC_ENVIOFACIL_DOMAIN ),
 			),
 			'additional_time'  => array(
-				'title'       => __( 'Dias adicionais', WC_ENVIOFACIL_DOMAIN ),
+				'title'       => __( 'Additional days', WC_ENVIOFACIL_DOMAIN ),
 				'type'        => 'decimal',
-				'description' => __( 'Dias úteis adicionados à estimativa de entrega.', WC_ENVIOFACIL_DOMAIN ),
+				'description' => __( 'Additional business days to the estimated delivery.', WC_ENVIOFACIL_DOMAIN ),
 				'desc_tip'    => true,
 				'default'     => '0',
 				'placeholder' => '0',
 			),
 			'fee'                => array(
-				'title'       => __( 'Taxa de manuseio', WC_ENVIOFACIL_DOMAIN ),
+				'title'       => __( 'Handling fee', WC_ENVIOFACIL_DOMAIN ),
 				'type'        => 'price',
-				'description' => __( 'Uma quantia que você deseja adicionar ao custo de envio.', WC_ENVIOFACIL_DOMAIN ),
+				'description' => __( 'An amount to add to the cost of the shipping method as a fee for handling it.', WC_ENVIOFACIL_DOMAIN ),
 				'desc_tip'    => true,
 				'placeholder' => '0.00',
 				'default'     => '',
