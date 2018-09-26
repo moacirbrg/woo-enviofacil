@@ -11,6 +11,8 @@ class WC_EnvioFacil_Shipping extends WC_Shipping_Method {
 	private $_sedex_enabled;
 	private $_sedex_title;
 	private $_additional_time;
+	private $_correios_enabled;
+	private $_correios_discount;
 	public $fee;
 
 	public function __construct( $instance_id = 0 ) {
@@ -29,6 +31,9 @@ class WC_EnvioFacil_Shipping extends WC_Shipping_Method {
 		$this->_pac_title               = $this->get_option( 'pac_title' );
 		$this->_sedex_enabled           = $this->get_option( 'sedex_enabled' );
 		$this->_sedex_title             = $this->get_option( 'sedex_title' );
+		$this->_additional_time         = $this->get_option( 'additional_time' );
+		$this->_correios_enabled        = $this->get_option( 'correios_enabled' );
+		$this->_correios_discount       = $this->get_option( 'correios_discount' );
 		$this->_additional_time         = $this->get_option( 'additional_time' );
 		$this->fee                      = $this->get_option( 'fee' );
 
@@ -100,6 +105,21 @@ class WC_EnvioFacil_Shipping extends WC_Shipping_Method {
 				'placeholder' => '0.00',
 				'default'     => '',
 			),
+			'correios_enabled' => array(
+				'title'       => __( 'Enable Correios contingency', WC_ENVIOFACIL_DOMAIN ),
+				'type'        => 'checkbox',
+				'description' => __( 'Enable Correios if Envio Fácil fails.', WC_ENVIOFACIL_DOMAIN ),
+				'desc_tip'    => true,
+				'default'     => 'yes',
+			),
+			'correios_discount' => array(
+				'title'       => __( 'Correios discount in %', WC_ENVIOFACIL_DOMAIN ),
+				'type'        => 'decimal',
+				'description' => __( 'To balance Envio Fácil unavailability, how much you would like to reduce, in percentage, on Correios\'s price.', WC_ENVIOFACIL_DOMAIN ),
+				'desc_tip'    => true,
+				'placeholder' => '14',
+				'default'     => '14',
+			),
 		);
 	}
 
@@ -112,20 +132,17 @@ class WC_EnvioFacil_Shipping extends WC_Shipping_Method {
 			return;
 		}
 
-		$_package = new WC_EnvioFacil_Package( $package );
-		$package_data = $_package->get_package_data();
-		
-		$ws = new WC_EnvioFacil_WebService();
-		$ws->set_cep_from( $this->_origin_postcode );
-		$ws->set_cep_to( $package['destination']['postcode'] );
-		$ws->set_width( $package_data['width'] );
-		$ws->set_height( $package_data['height'] );
-		$ws->set_length( $package_data['length'] );
-		$ws->set_weight( $package_data['weight'] );
-		
-		$enviofacil_rates = $ws->get_enviofacil_rates();
+		$ws = new WC_EnvioFacil_UOL_WebService();
+		$this->setup_webservice( $ws, $package );
+		$rates = $ws->get_webservice_rates();
 
-		foreach ( $enviofacil_rates as $enviofacil_rate ) {
+		if ( count( $rates ) === 0 && $this->_correios_enabled === 'yes' ) {
+			$ws = new WC_EnvioFacil_Correios_WebService();
+			$this->setup_webservice( $ws, $package );
+			$rates = $ws->get_webservice_rates();
+		}
+
+		foreach ( $rates as $enviofacil_rate ) {
 			if ( ! $this->is_shipping_method_enabled( $enviofacil_rate->get_service_type() ) ) {
 				continue;
 			}
@@ -138,6 +155,9 @@ class WC_EnvioFacil_Shipping extends WC_Shipping_Method {
 			}
 
 			$cost = $enviofacil_rate->get_total_value();
+			if ( $ws instanceof WC_EnvioFacil_Correios_WebService ) {
+				$cost = $cost - ( $cost * ( intval( $this->_correios_discount ) / 100 ) );
+			}
 
 			$rate = array(
 				'id'       => $this->id . $enviofacil_rate->get_service_type() . $this->instance_id,
@@ -148,6 +168,26 @@ class WC_EnvioFacil_Shipping extends WC_Shipping_Method {
 			
 			$this->add_rate( $rate );
 		}
+	}
+
+	/**
+	 * @param WC_EnvioFacil_WebService $ws
+	 * @param array $package
+	 */
+	private function setup_webservice( $ws, $package ) {
+		if ( ! $ws instanceof WC_EnvioFacil_WebService ) {
+			throw new InvalidArgumentException();
+		}
+
+		$_package = new WC_EnvioFacil_Package( $package );
+		$package_data = $_package->get_package_data();
+
+		$ws->set_cep_from( $this->_origin_postcode );
+		$ws->set_cep_to( $package['destination']['postcode'] );
+		$ws->set_width( $package_data['width'] );
+		$ws->set_height( $package_data['height'] );
+		$ws->set_length( $package_data['length'] );
+		$ws->set_weight( $package_data['weight'] );
 	}
 
 	/**

@@ -17,8 +17,10 @@ class WC_EnvioFacil {
     public static function includes() {
         include_once dirname( __FILE__ ) . '/enums/class-wc-enviofacil-shipping-method.php';
         include_once dirname( __FILE__ ) . '/class-wc-enviofacil-package.php';
-        include_once dirname( __FILE__ ) . '/class-wc-enviofacil-rate.php';
-        include_once dirname( __FILE__ ) . '/class-wc-enviofacil-webservice.php';
+        include_once dirname( __FILE__ ) . '/webservices/class-wc-enviofacil-webservice-rate.php';
+	    include_once dirname( __FILE__ ) . '/webservices/class-wc-enviofacil-webservice.php';
+	    include_once dirname( __FILE__ ) . '/webservices/class-wc-enviofacil-uol-webservice.php';
+	    include_once dirname( __FILE__ ) . '/webservices/class-wc-enviofacil-correios-webservice.php';
         include_once dirname( __FILE__ ) . '/class-wc-enviofacil-shipping.php';
     }
 
