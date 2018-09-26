@@ -159,6 +159,10 @@ class WC_EnvioFacil_Shipping extends WC_Shipping_Method {
 				$cost = $cost - ( $cost * ( intval( $this->_correios_discount ) / 100 ) );
 			}
 
+			if ( $cost <= 0 ) {
+				continue;
+			}
+
 			$rate = array(
 				'id'       => $this->id . $enviofacil_rate->get_service_type() . $this->instance_id,
 				'label'     => $this->get_service_type_site_name( $enviofacil_rate->get_service_type() ),
