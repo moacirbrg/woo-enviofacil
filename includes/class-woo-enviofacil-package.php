@@ -4,7 +4,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
 }
 
-class WC_EnvioFacil_Package {
+class WOO_EnvioFacil_Package {
 	
 	private $package = array();
 	
@@ -24,7 +24,7 @@ class WC_EnvioFacil_Package {
 		$weight = array();
 		
 		foreach ( $this->package['contents'] as $item_id => $values ) {
-			/** @var WC_Product $product */
+			/** @var WOO_Product $product */
 			$product = $values['data'];
 			/** @var int $qty */
 			$qty     = $values['quantity'];

@@ -4,7 +4,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
 }
 
-class WC_EnvioFacil_UOL_WebService extends WC_EnvioFacil_WebService {
+class WOO_EnvioFacil_UOL_WebService extends WOO_EnvioFacil_WebService {
 
 	private $_webservice_url = 'https://pagseguro.uol.com.br/para-seu-negocio/online/envio-facil';
 
@@ -29,20 +29,20 @@ class WC_EnvioFacil_UOL_WebService extends WC_EnvioFacil_WebService {
 
 		$service_type = '';
 		if ( $ws_raw_data->serviceType == 'PAC' ) {
-			$service_type = WC_EnvioFacil_Shipping_Method::PAC;
+			$service_type = WOO_EnvioFacil_Shipping_Method::PAC;
 		}
 		else if ( $ws_raw_data->serviceType == 'SEDEX' ) {
-			$service_type = WC_EnvioFacil_Shipping_Method::SEDEX;
+			$service_type = WOO_EnvioFacil_Shipping_Method::SEDEX;
 		}
 
-		return new WC_EnvioFacil_WebService_Rate(
+		return new WOO_EnvioFacil_WebService_Rate(
 			$service_type,
 			$ws_raw_data->totalValue,
 			$ws_raw_data->estimatedDelivery );
 	}
 
 	/**
-	 * @return array|WC_EnvioFacil_WebService_Rate[]
+	 * @return array|WOO_EnvioFacil_WebService_Rate[]
 	 */
 	public function get_webservice_rates() {
 		$params = $this->create_params();

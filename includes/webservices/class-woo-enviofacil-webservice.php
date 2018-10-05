@@ -4,7 +4,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
 }
 
-abstract class WC_EnvioFacil_WebService {
+abstract class WOO_EnvioFacil_WebService {
 
 	protected $_cep_from = '';
 	protected $_cep_to = '';
@@ -78,14 +78,14 @@ abstract class WC_EnvioFacil_WebService {
 	 *
 	 * @param object $ws_raw_data
 	 *
-	 * @return WC_EnvioFacil_WebService_Rate
+	 * @return WOO_EnvioFacil_WebService_Rate
 	 */
 	protected abstract function create_webservice_rate( $ws_raw_data );
 
 	/**
 	 * Gets delivery rates from the web service
 	 *
-	 * @return WC_EnvioFacil_WebService_Rate[]
+	 * @return WOO_EnvioFacil_WebService_Rate[]
 	 */
 	public abstract function get_webservice_rates();
 }

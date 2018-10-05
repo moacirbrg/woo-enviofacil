@@ -3,7 +3,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit(); // Exit if accessed directly.
 }
 
-class WC_EnvioFacil_Shipping extends WC_Shipping_Method {
+class WOO_EnvioFacil_Shipping extends WC_Shipping_Method {
 	private $_origin_postcode;
 	private $_show_estimated_delivery;
 	private $_pac_enabled;
@@ -18,10 +18,10 @@ class WC_EnvioFacil_Shipping extends WC_Shipping_Method {
 	public function __construct( $instance_id = 0 ) {
 		parent::__construct( $instance_id );
 		$this->id                 = 'enviofacil';
-		$this->method_title       = __( 'Envio Fácil', WC_ENVIOFACIL_DOMAIN );
-		$this->method_description = __( 'Adds shipping method PAC and SEDEX via Envio Fácil to WooCommerce.', WC_ENVIOFACIL_DOMAIN );
+		$this->method_title       = __( 'Envio Fácil', WOO_ENVIOFACIL_DOMAIN );
+		$this->method_description = __( 'Adds shipping method PAC and SEDEX via Envio Fácil to WooCommerce.', WOO_ENVIOFACIL_DOMAIN );
 		$this->supports           = array( 'shipping-zones', 'instance-settings' );
-		$this->title              = __( 'Envio Fácil', WC_ENVIOFACIL_DOMAIN );
+		$this->title              = __( 'Envio Fácil', WOO_ENVIOFACIL_DOMAIN );
 
 		$this->init_form_fields();
 
@@ -42,80 +42,80 @@ class WC_EnvioFacil_Shipping extends WC_Shipping_Method {
 
 	/**
 	 * {@inheritDoc}
-	 * @see WC_Settings_API::init_form_fields()
+	 * @see WOO_Settings_API::init_form_fields()
 	 */
 	public function init_form_fields() {
 		$this->instance_form_fields = array(
 			'origin_postcode' => array(
-				'title'       => __( 'Origin postcode', WC_ENVIOFACIL_DOMAIN ),
+				'title'       => __( 'Origin postcode', WOO_ENVIOFACIL_DOMAIN ),
 				'type'        => 'text',
-				'description' => __( 'It is the postcode from the sender.', WC_ENVIOFACIL_DOMAIN ),
+				'description' => __( 'It is the postcode from the sender.', WOO_ENVIOFACIL_DOMAIN ),
 				'desc_tip'    => true,
 				'default'     => '00000-000',
 			),
 			'show_estimated_delivery' => array(
-				'title'       => __( 'Estimated delivery.', WC_ENVIOFACIL_DOMAIN ),
+				'title'       => __( 'Estimated delivery.', WOO_ENVIOFACIL_DOMAIN ),
 				'type'        => 'checkbox',
-				'label'       => __( 'Show estimated delivery', WC_ENVIOFACIL_DOMAIN ),
-				'description' => __( 'Display the estimated delivery in business day.', WC_ENVIOFACIL_DOMAIN ),
+				'label'       => __( 'Show estimated delivery', WOO_ENVIOFACIL_DOMAIN ),
+				'description' => __( 'Display the estimated delivery in business day.', WOO_ENVIOFACIL_DOMAIN ),
 				'desc_tip'    => true,
 				'default'     => 'yes',
 			),
 			'pac_enabled' => array(
-				'title'       => __( 'Enable PAC', WC_ENVIOFACIL_DOMAIN ),
+				'title'       => __( 'Enable PAC', WOO_ENVIOFACIL_DOMAIN ),
 				'type'        => 'checkbox',
-				'description' => __( 'Enable PAC as a shipping method.', WC_ENVIOFACIL_DOMAIN ),
+				'description' => __( 'Enable PAC as a shipping method.', WOO_ENVIOFACIL_DOMAIN ),
 				'desc_tip'    => true,
 				'default'     => 'yes',
 			),
 			'pac_title' => array(
-				'title'       => __( 'PAC title', WC_ENVIOFACIL_DOMAIN ),
+				'title'       => __( 'PAC title', WOO_ENVIOFACIL_DOMAIN ),
 				'type'        => 'text',
-				'description' => __( 'Title to be displayed on site.', WC_ENVIOFACIL_DOMAIN ),
+				'description' => __( 'Title to be displayed on site.', WOO_ENVIOFACIL_DOMAIN ),
 				'desc_tip'    => true,
 				'default'     => 'PAC',
 			),
 			'sedex_enabled' => array(
-				'title'       => __( 'Enable SEDEX', WC_ENVIOFACIL_DOMAIN ),
+				'title'       => __( 'Enable SEDEX', WOO_ENVIOFACIL_DOMAIN ),
 				'type'        => 'checkbox',
-				'description' => __( 'Enable SEDEX as a shipping method.', WC_ENVIOFACIL_DOMAIN ),
+				'description' => __( 'Enable SEDEX as a shipping method.', WOO_ENVIOFACIL_DOMAIN ),
 				'desc_tip'    => true,
 				'default'     => 'yes',
 			),
 			'sedex_title' => array(
-				'title'       => __( 'Título do SEDEX', WC_ENVIOFACIL_DOMAIN ),
+				'title'       => __( 'Título do SEDEX', WOO_ENVIOFACIL_DOMAIN ),
 				'type'        => 'text',
-				'description' => __( 'Title to be displayed on site', WC_ENVIOFACIL_DOMAIN ),
+				'description' => __( 'Title to be displayed on site', WOO_ENVIOFACIL_DOMAIN ),
 				'desc_tip'    => true,
 				'default'     => 'SEDEX',
 			),
 			'additional_time'  => array(
-				'title'       => __( 'Additional days', WC_ENVIOFACIL_DOMAIN ),
+				'title'       => __( 'Additional days', WOO_ENVIOFACIL_DOMAIN ),
 				'type'        => 'decimal',
-				'description' => __( 'Additional business days to the estimated delivery.', WC_ENVIOFACIL_DOMAIN ),
+				'description' => __( 'Additional business days to the estimated delivery.', WOO_ENVIOFACIL_DOMAIN ),
 				'desc_tip'    => true,
 				'default'     => '0',
 				'placeholder' => '0',
 			),
 			'fee'                => array(
-				'title'       => __( 'Handling fee', WC_ENVIOFACIL_DOMAIN ),
+				'title'       => __( 'Handling fee', WOO_ENVIOFACIL_DOMAIN ),
 				'type'        => 'price',
-				'description' => __( 'An amount to add to the cost of the shipping method as a fee for handling it.', WC_ENVIOFACIL_DOMAIN ),
+				'description' => __( 'An amount to add to the cost of the shipping method as a fee for handling it.', WOO_ENVIOFACIL_DOMAIN ),
 				'desc_tip'    => true,
 				'placeholder' => '0.00',
 				'default'     => '',
 			),
 			'correios_enabled' => array(
-				'title'       => __( 'Enable Correios contingency', WC_ENVIOFACIL_DOMAIN ),
+				'title'       => __( 'Enable Correios contingency', WOO_ENVIOFACIL_DOMAIN ),
 				'type'        => 'checkbox',
-				'description' => __( 'Enable Correios if Envio Fácil fails.', WC_ENVIOFACIL_DOMAIN ),
+				'description' => __( 'Enable Correios if Envio Fácil fails.', WOO_ENVIOFACIL_DOMAIN ),
 				'desc_tip'    => true,
 				'default'     => 'yes',
 			),
 			'correios_discount' => array(
-				'title'       => __( 'Correios discount in %', WC_ENVIOFACIL_DOMAIN ),
+				'title'       => __( 'Correios discount in %', WOO_ENVIOFACIL_DOMAIN ),
 				'type'        => 'decimal',
-				'description' => __( 'To balance Envio Fácil unavailability, how much you would like to reduce, in percentage, on Correios\'s price.', WC_ENVIOFACIL_DOMAIN ),
+				'description' => __( 'To balance Envio Fácil unavailability, how much you would like to reduce, in percentage, on Correios\'s price.', WOO_ENVIOFACIL_DOMAIN ),
 				'desc_tip'    => true,
 				'placeholder' => '14',
 				'default'     => '14',
@@ -125,19 +125,19 @@ class WC_EnvioFacil_Shipping extends WC_Shipping_Method {
 
 	/**
 	 * {@inheritDoc}
-	 * @see WC_Shipping_Method::calculate_shipping()
+	 * @see WOO_Shipping_Method::calculate_shipping()
 	 */
 	public function calculate_shipping( $package = array() ) {
 		if ( $this->_origin_postcode === '00000-000' || $this->_origin_postcode === '' ) {
 			return;
 		}
 
-		$ws = new WC_EnvioFacil_UOL_WebService();
+		$ws = new WOO_EnvioFacil_UOL_WebService();
 		$this->setup_webservice( $ws, $package );
 		$rates = $ws->get_webservice_rates();
 
 		if ( count( $rates ) === 0 && $this->_correios_enabled === 'yes' ) {
-			$ws = new WC_EnvioFacil_Correios_WebService();
+			$ws = new WOO_EnvioFacil_Correios_WebService();
 			$this->setup_webservice( $ws, $package );
 			$rates = $ws->get_webservice_rates();
 		}
@@ -155,7 +155,7 @@ class WC_EnvioFacil_Shipping extends WC_Shipping_Method {
 			}
 
 			$cost = $enviofacil_rate->get_total_value();
-			if ( $ws instanceof WC_EnvioFacil_Correios_WebService ) {
+			if ( $ws instanceof WOO_EnvioFacil_Correios_WebService ) {
 				$cost = $cost - ( $cost * ( intval( $this->_correios_discount ) / 100 ) );
 			}
 
@@ -175,15 +175,15 @@ class WC_EnvioFacil_Shipping extends WC_Shipping_Method {
 	}
 
 	/**
-	 * @param WC_EnvioFacil_WebService $ws
+	 * @param WOO_EnvioFacil_WebService $ws
 	 * @param array $package
 	 */
 	private function setup_webservice( $ws, $package ) {
-		if ( ! $ws instanceof WC_EnvioFacil_WebService ) {
+		if ( ! $ws instanceof WOO_EnvioFacil_WebService ) {
 			throw new InvalidArgumentException();
 		}
 
-		$_package = new WC_EnvioFacil_Package( $package );
+		$_package = new WOO_EnvioFacil_Package( $package );
 		$package_data = $_package->get_package_data();
 
 		$ws->set_cep_from( $this->_origin_postcode );
@@ -202,10 +202,10 @@ class WC_EnvioFacil_Shipping extends WC_Shipping_Method {
 	 * @return string
 	 */
 	public function get_service_type_site_name( $service_type = null ) {
-		if ( $service_type === WC_EnvioFacil_Shipping_Method::PAC ) {
+		if ( $service_type === WOO_EnvioFacil_Shipping_Method::PAC ) {
 			return $this->_pac_title;
 		}
-		else if ( $service_type === WC_EnvioFacil_Shipping_Method::SEDEX ) {
+		else if ( $service_type === WOO_EnvioFacil_Shipping_Method::SEDEX ) {
 			return $this->_sedex_title;
 		}
 		else {
@@ -214,11 +214,11 @@ class WC_EnvioFacil_Shipping extends WC_Shipping_Method {
 	}
 
 	public function is_shipping_method_enabled( $service_type = null ) {
-		if ( $service_type === WC_EnvioFacil_Shipping_Method::PAC && $this->_pac_enabled === 'yes' ) {
+		if ( $service_type === WOO_EnvioFacil_Shipping_Method::PAC && $this->_pac_enabled === 'yes' ) {
 			return true;
 		}
 
-		if ( $service_type === WC_EnvioFacil_Shipping_Method::SEDEX && $this->_sedex_enabled === 'yes' ) {
+		if ( $service_type === WOO_EnvioFacil_Shipping_Method::SEDEX && $this->_sedex_enabled === 'yes' ) {
 			return true;
 		}
 

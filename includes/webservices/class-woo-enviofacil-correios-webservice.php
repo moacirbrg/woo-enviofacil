@@ -4,7 +4,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
 }
 
-class WC_EnvioFacil_Correios_WebService extends WC_EnvioFacil_WebService {
+class WOO_EnvioFacil_Correios_WebService extends WOO_EnvioFacil_WebService {
 
 	const PAC_SERVICE_CODE   = '04510';
 	const SEDEX_SERVICE_CODE = '04014';
@@ -52,20 +52,20 @@ class WC_EnvioFacil_Correios_WebService extends WC_EnvioFacil_WebService {
 
 		$service_type = '';
 		if ( $ws_raw_data->Codigo == 4510 ) {
-			$service_type = WC_EnvioFacil_Shipping_Method::PAC;
+			$service_type = WOO_EnvioFacil_Shipping_Method::PAC;
 		}
 		else if ( $ws_raw_data->Codigo == 4014 ) {
-			$service_type = WC_EnvioFacil_Shipping_Method::SEDEX;
+			$service_type = WOO_EnvioFacil_Shipping_Method::SEDEX;
 		}
 
-		return new WC_EnvioFacil_WebService_Rate(
+		return new WOO_EnvioFacil_WebService_Rate(
 			$service_type,
 			floatval( $ws_raw_data->Valor ),
 			intval( $ws_raw_data->PrazoEntrega ) );
 	}
 
 	/**
-	 * @return array|WC_EnvioFacil_WebService_Rate[]
+	 * @return array|WOO_EnvioFacil_WebService_Rate[]
 	 */
 	public function get_webservice_rates() {
 		$rates = array();

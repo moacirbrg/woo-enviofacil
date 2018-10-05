@@ -4,14 +4,14 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
 }
 
-class WC_EnvioFacil_WebService_Rate {
+class WOO_EnvioFacil_WebService_Rate {
 
 	private $service_type;
 	private $total_value;
 	private $estimated_delivery;
 
 	/**
-	 * WC_EnvioFacil_WebService_Rate constructor.
+	 * WOO_EnvioFacil_WebService_Rate constructor.
 	 *
 	 * @param string $service_type
 	 * @param float $total_value

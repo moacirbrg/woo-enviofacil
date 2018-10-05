@@ -1,12 +1,12 @@
 <?php
 /**
  * Plugin Name:          WooCommerce Envio Fácil
- * Plugin URI:           https://github.com/moacirbrg/woocommerce-enviofacil
+ * Plugin URI:           https://github.com/moacirbrg/woo-enviofacil
  * Description:          Adds Envio Fácil shipping methods to WooCommerce
  * Author:               Moacir Braga
  * Version:              0.1.1
  * License:              GPLv2 or later
- * Text Domain:          woocommerce-enviofacil
+ * Text Domain:          woo-enviofacil
  * Domain Path:          /languages
  * WC requires at least: 4.6.0
  * WC tested up to:      4.9.8
@@ -33,12 +33,12 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
 }
 
-define( 'WC_ENVIOFACIL_PLUGIN_FILE', __FILE__ );
-define( 'WC_ENVIOFACIL_DOMAIN', 'woocommerce-enviofacil' );
+define( 'WOO_ENVIOFACIL_PLUGIN_FILE', __FILE__ );
+define( 'WOO_ENVIOFACIL_DOMAIN', 'woo-enviofacil' );
 
-if ( ! class_exists( 'WC_EnvioFacil' ) ) {
+if ( ! class_exists( 'WOO_EnvioFacil' ) ) {
 	if ( in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', get_option( 'active_plugins' ) ) ) ) {
-		include_once dirname( __FILE__ ) . '/includes/class-wc-enviofacil.php';
-		add_action( 'woocommerce_shipping_init', array( 'WC_EnvioFacil', 'init' ) );
+		include_once dirname( __FILE__ ) . '/includes/class-woo-enviofacil.php';
+		add_action( 'woocommerce_shipping_init', array( 'WOO_EnvioFacil', 'init' ) );
 	}
 }

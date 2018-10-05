@@ -27,6 +27,8 @@ Este plugin oferece os seguintes recursos:
  - SEDEX
 - Possibilidade de aplicar desconto ou taxa ao serviço de entrega
 - Possibilidade de adicionar prazo extra para a entrega
+- No caso de falha do Envio Fácil, é utilizado o Correios com desconto definido pelo lojista.
+ - Mesmo que a venda tenha sido finalizada através do web service do Correios, se o pagamento foi por meio do Pag Seguro, o lojista é capaz de comprar manualmente o frete do Envio Fácil no painel do Pag Seguro.
 
 = Instalação: =
 
@@ -38,11 +40,13 @@ Requer WooCommerce 3.0 ou posterior para funcionar
 
 = Serviços de terceiros =
 
-Este plugin não coleta seus dados, contudo ele se comunica com o web service do Envio Fácil para obter os preços e prazos do envio. Não garantimos o uso dos dados por parte do web service, mas anexamos abaixo os dois termos que encontramos relacionados ao web service:
-- [Regras de uso](https://pagseguro.uol.com.br/sobre/regras-de-uso)
-- [Normas de segurança e privacidade](https://sac.uol.com.br/info/protecao_privacidade/normas_protecao_privacidade.jhtm)
-
-Se você desejar, você também pode acessar o [site do serviço](https://pagseguro.uol.com.br/para-seu-negocio/online/envio-facil).
+Este plugin não coleta seus dados, contudo ele se comunica com dois web services de terceiros, o [Envio Fácil](https://pagseguro.uol.com.br/para-seu-negocio/online/envio-facil#rmcl) para obter os preços e prazos do envio e caso este falhe, é utilizado o web service do [Correios](http://www.correios.com.br/). Não garantimos o uso dos dados por parte destes web services, mas anexamos abaixo as páginas relacionadas aos web services:
+- Envio Fácil
+ - [Regras de uso](https://pagseguro.uol.com.br/sobre/regras-de-uso)
+ - [Normas de segurança e privacidade](https://sac.uol.com.br/info/protecao_privacidade/normas_protecao_privacidade.jhtm)
+- Correios
+ - [Calculador Remoto de Preços e Prazos](http://www.correios.com.br/precos-e-prazos/calculador-remoto-de-precos-e-prazos)
+ - [Manual de implementação do webservice](http://www.correios.com.br/a-a-z/pdf/calculador-remoto-de-precos-e-prazos/manual-de-implementacao-do-calculo-remoto-de-precos-e-prazos)
 
 Para solicitarmos os preços e prazos para o web service, enviamos os seguintes dados sob HTTPS (comunicação criptografada):
 - CEP de origem
@@ -52,7 +56,7 @@ Para solicitarmos os preços e prazos para o web service, enviamos os seguintes 
 - Comprimento do pacote
 - Peso aproximado do pacote
 
-Além disso, como é uma comunicação em rede, o web service deles é capaz de obter o IP do servidor que está fazendo a consulta.
+Além disso, como é uma comunicação em rede, os web services são capazes de obter o IP do servidor que está fazendo a consulta.
 
 Dados sensíveis que possam identificar o cliente da loja e o que ele estaria comprando NÃO SÃO ENVIADOS por este plugin.
 

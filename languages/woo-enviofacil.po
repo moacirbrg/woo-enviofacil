@@ -16,97 +16,97 @@ msgstr ""
 "X-Poedit-KeywordsList: __;_e\n"
 "X-Poedit-SearchPath-0: .\n"
 
-#: includes/class-wc-enviofacil-shipping.php:21
-#: includes/class-wc-enviofacil-shipping.php:24
+#: includes/class-woo-enviofacil-shipping.php:21
+#: includes/class-woo-enviofacil-shipping.php:24
 msgid "Envio Fácil"
 msgstr ""
 
-#: includes/class-wc-enviofacil-shipping.php:22
+#: includes/class-woo-enviofacil-shipping.php:22
 msgid "Adds shipping method PAC and SEDEX via Envio Fácil to WooCommerce."
 msgstr ""
 
-#: includes/class-wc-enviofacil-shipping.php:50
+#: includes/class-woo-enviofacil-shipping.php:50
 msgid "Origin postcode"
 msgstr ""
 
-#: includes/class-wc-enviofacil-shipping.php:52
+#: includes/class-woo-enviofacil-shipping.php:52
 msgid "It is the postcode from the sender."
 msgstr ""
 
-#: includes/class-wc-enviofacil-shipping.php:57
+#: includes/class-woo-enviofacil-shipping.php:57
 msgid "Estimated delivery."
 msgstr ""
 
-#: includes/class-wc-enviofacil-shipping.php:59
+#: includes/class-woo-enviofacil-shipping.php:59
 msgid "Show estimated delivery"
 msgstr ""
 
-#: includes/class-wc-enviofacil-shipping.php:60
+#: includes/class-woo-enviofacil-shipping.php:60
 msgid "Display the estimated delivery in business day."
 msgstr ""
 
-#: includes/class-wc-enviofacil-shipping.php:65
+#: includes/class-woo-enviofacil-shipping.php:65
 msgid "Enable PAC"
 msgstr ""
 
-#: includes/class-wc-enviofacil-shipping.php:67
+#: includes/class-woo-enviofacil-shipping.php:67
 msgid "Enable PAC as a shipping method."
 msgstr ""
 
-#: includes/class-wc-enviofacil-shipping.php:72
+#: includes/class-woo-enviofacil-shipping.php:72
 msgid "PAC title"
 msgstr ""
 
-#: includes/class-wc-enviofacil-shipping.php:74
+#: includes/class-woo-enviofacil-shipping.php:74
 msgid "Title to be displayed on site."
 msgstr ""
 
-#: includes/class-wc-enviofacil-shipping.php:79
+#: includes/class-woo-enviofacil-shipping.php:79
 msgid "Enable SEDEX"
 msgstr ""
 
-#: includes/class-wc-enviofacil-shipping.php:81
+#: includes/class-woo-enviofacil-shipping.php:81
 msgid "Enable SEDEX as a shipping method."
 msgstr ""
 
-#: includes/class-wc-enviofacil-shipping.php:86
+#: includes/class-woo-enviofacil-shipping.php:86
 msgid "Título do SEDEX"
 msgstr ""
 
-#: includes/class-wc-enviofacil-shipping.php:88
+#: includes/class-woo-enviofacil-shipping.php:88
 msgid "Title to be displayed on site"
 msgstr ""
 
-#: includes/class-wc-enviofacil-shipping.php:93
+#: includes/class-woo-enviofacil-shipping.php:93
 msgid "Additional days"
 msgstr ""
 
-#: includes/class-wc-enviofacil-shipping.php:95
+#: includes/class-woo-enviofacil-shipping.php:95
 msgid "Additional business days to the estimated delivery."
 msgstr ""
 
-#: includes/class-wc-enviofacil-shipping.php:101
+#: includes/class-woo-enviofacil-shipping.php:101
 msgid "Handling fee"
 msgstr ""
 
-#: includes/class-wc-enviofacil-shipping.php:103
+#: includes/class-woo-enviofacil-shipping.php:103
 msgid ""
 "An amount to add to the cost of the shipping method as a fee for handling it."
 msgstr ""
 
-#: includes/class-wc-enviofacil-shipping.php:109
+#: includes/class-woo-enviofacil-shipping.php:109
 msgid "Enable Correios contingency"
 msgstr ""
 
-#: includes/class-wc-enviofacil-shipping.php:111
+#: includes/class-woo-enviofacil-shipping.php:111
 msgid "Enable Correios if Envio Fácil fails."
 msgstr ""
 
-#: includes/class-wc-enviofacil-shipping.php:116
+#: includes/class-woo-enviofacil-shipping.php:116
 msgid "Correios discount in %"
 msgstr ""
 
-#: includes/class-wc-enviofacil-shipping.php:118
+#: includes/class-woo-enviofacil-shipping.php:118
 msgid ""
 "To balance Envio Fácil unavailability, how much you would like to reduce, in "
 "percentage, on Correios's price."
