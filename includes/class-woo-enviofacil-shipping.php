@@ -83,7 +83,7 @@ class WOO_EnvioFacil_Shipping extends WC_Shipping_Method {
 				'default'     => 'yes',
 			),
 			'sedex_title' => array(
-				'title'       => __( 'Título do SEDEX', WOO_ENVIOFACIL_DOMAIN ),
+				'title'       => __( 'SEDEX title', WOO_ENVIOFACIL_DOMAIN ),
 				'type'        => 'text',
 				'description' => __( 'Title to be displayed on site', WOO_ENVIOFACIL_DOMAIN ),
 				'desc_tip'    => true,

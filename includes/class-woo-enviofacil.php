@@ -18,9 +18,9 @@ class WOO_EnvioFacil {
         include_once dirname( __FILE__ ) . '/enums/class-woo-enviofacil-shipping-method.php';
         include_once dirname( __FILE__ ) . '/class-woo-enviofacil-package.php';
         include_once dirname( __FILE__ ) . '/webservices/class-woo-enviofacil-webservice-rate.php';
-	    include_once dirname( __FILE__ ) . '/webservices/class-woo-enviofacil-webservice.php';
-	    include_once dirname( __FILE__ ) . '/webservices/class-woo-enviofacil-uol-webservice.php';
-	    include_once dirname( __FILE__ ) . '/webservices/class-woo-enviofacil-correios-webservice.php';
+        include_once dirname( __FILE__ ) . '/webservices/class-woo-enviofacil-webservice.php';
+        include_once dirname( __FILE__ ) . '/webservices/class-woo-enviofacil-uol-webservice.php';
+        include_once dirname( __FILE__ ) . '/webservices/class-woo-enviofacil-correios-webservice.php';
         include_once dirname( __FILE__ ) . '/class-woo-enviofacil-shipping.php';
     }
 

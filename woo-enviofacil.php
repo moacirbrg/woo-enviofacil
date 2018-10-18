@@ -40,5 +40,8 @@ if ( ! class_exists( 'WOO_EnvioFacil' ) ) {
 	if ( in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', get_option( 'active_plugins' ) ) ) ) {
 		include_once dirname( __FILE__ ) . '/includes/class-woo-enviofacil.php';
 		add_action( 'woocommerce_shipping_init', array( 'WOO_EnvioFacil', 'init' ) );
+		add_action( 'plugins_loaded', function() {
+			load_plugin_textdomain( WOO_ENVIOFACIL_DOMAIN, FALSE, basename( dirname( __FILE__ ) ) . '/languages/' );
+		} );
 	}
 }
