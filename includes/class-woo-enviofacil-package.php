@@ -30,10 +30,10 @@ class WOO_EnvioFacil_Package {
 			$qty     = $values['quantity'];
 			
 			if ( $qty > 0 && $product->needs_shipping() ) {
-				array_push( $height, wc_get_dimension( (float) $product->get_height(), 'cm' ) );
+				array_push( $height, wc_get_dimension( (float) $product->get_height() * $qty, 'cm' ) );
 				array_push( $length, wc_get_dimension( (float) $product->get_length(), 'cm' ) );
 				array_push( $width, wc_get_dimension( (float) $product->get_width(), 'cm' ) );
-				array_push( $weight, wc_get_weight( (float) $product->get_weight(), 'kg' ) );
+				array_push( $weight, wc_get_weight( (float) $product->get_weight() * $qty, 'kg' ) );
 			}
 		}
 		
