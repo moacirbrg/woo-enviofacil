@@ -42,7 +42,7 @@ abstract class WOO_EnvioFacil_WebService {
 
 		foreach ( $available_weights as $available_weight ) {
 			if ( $weight <= $available_weight ) {
-				return $weight;
+				return $available_weight;
 			}
 		}
 

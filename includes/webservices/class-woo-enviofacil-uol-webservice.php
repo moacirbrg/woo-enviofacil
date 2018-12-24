@@ -7,14 +7,17 @@ if ( ! defined( 'ABSPATH' ) ) {
 class WOO_EnvioFacil_UOL_WebService extends WOO_EnvioFacil_WebService {
 
 	private $_webservice_url = 'https://pagseguro.uol.com.br/para-seu-negocio/online/envio-facil';
+	private $_min_width = 11;
+	private $_min_height = 2;
+	private $_min_length = 16;
 
 	private function create_params() {
 		$params = [
 			'cepFrom' => $this->_cep_from,
 			'cepTo'   => $this->_cep_to,
-			'width'   => $this->_width,
-			'height'  => $this->_height,
-			'length'  => $this->_length,
+			'width'   => ( $this->_width > $this->_min_width ) ? $this->_width : $this->_min_width,
+			'height'  => ( $this->_height > $this->_min_height ) ? $this->_height : $this->_min_height,
+			'length'  => ( $this->_length > $this->_min_length ) ? $this->_length : $this->_min_length,
 			'weight'  => $this->get_webservice_weigth( $this->_weight ),
 			'serviceType' => ''
 		];

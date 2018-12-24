@@ -2,8 +2,8 @@
 **Contributors:** [moacirbrg](https://profiles.wordpress.org/moacirbrg)<br/>
 **Tags:** shipping, delivery, woocommerce, enviofacil, envio fácil<br/>
 **Requires at least:** 4.6<br/>
-**Tested up to:** 4.9<br/>
-**Stable tag:** 0.1.3<br/>
+**Tested up to:** 5.0<br/>
+**Stable tag:** 0.1.4<br/>
 **Requires PHP:** 5.6<br/>
 **License:** GPLv2 or later<br/>
 **License URI:** http://www.gnu.org/licenses/gpl-2.0.html<br/>
