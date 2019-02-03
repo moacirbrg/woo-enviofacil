@@ -15,9 +15,9 @@ class WOO_EnvioFacil_UOL_WebService extends WOO_EnvioFacil_WebService {
 		$params = [
 			'cepFrom' => $this->_cep_from,
 			'cepTo'   => $this->_cep_to,
-			'width'   => ( $this->_width > $this->_min_width ) ? $this->_width : $this->_min_width,
-			'height'  => ( $this->_height > $this->_min_height ) ? $this->_height : $this->_min_height,
-			'length'  => ( $this->_length > $this->_min_length ) ? $this->_length : $this->_min_length,
+			'width'   => ceil( ( $this->_width > $this->_min_width ) ? $this->_width : $this->_min_width ),
+			'height'  => ceil( ( $this->_height > $this->_min_height ) ? $this->_height : $this->_min_height ),
+			'length'  => ceil( ( $this->_length > $this->_min_length ) ? $this->_length : $this->_min_length ),
 			'weight'  => $this->get_webservice_weigth( $this->_weight ),
 			'serviceType' => ''
 		];
