@@ -128,7 +128,9 @@ class WOO_EnvioFacil_Shipping extends WC_Shipping_Method {
 	 * @see WOO_Shipping_Method::calculate_shipping()
 	 */
 	public function calculate_shipping( $package = array() ) {
-		if ( $this->_origin_postcode === '00000-000' || $this->_origin_postcode === '' ) {
+		if ( $this->_origin_postcode === '00000-000'
+		  || $this->_origin_postcode === ''
+		  || $package['destination']['postcode'] === '') {
 			return;
 		}
 
